@@ -12,20 +12,18 @@ export default function Msgdisplay() {
         setMessage(data);
       });
   }
-
   const array = [];
-
   Object.keys(message).map(function (key, index) {
     array.push(message[key].msg);
   });
-
   useEffect(() => {
     setInterval(fetchData, 200);
+    // fetchData();
   }, []);
   return (
-    <div>
+    <div className="message-display-wrapper">
       {array.map((msg) => (
-        <h1>{msg}</h1>
+        <span className="message">{msg}</span>
       ))}
     </div>
   );

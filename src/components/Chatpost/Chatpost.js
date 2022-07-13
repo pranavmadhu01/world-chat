@@ -1,5 +1,5 @@
 import "./Chatpost.css";
-import { GrSend } from "react-icons/gr";
+import { RiSendPlane2Line } from "react-icons/ri";
 import { useState } from "react";
 
 export default function Chatpost() {
@@ -34,10 +34,8 @@ export default function Chatpost() {
         />
 
         <button type="submit">
-          <GrSend />
+          <RiSendPlane2Line className="send-icon"/>
         </button>
-
-        <div className="message">{message ? <p>{message}</p> : null}</div>
       </form>
     </div>
   );
