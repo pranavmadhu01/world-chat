@@ -2,10 +2,8 @@ import "./Chatpost.css";
 import { RiSendPlane2Line } from "react-icons/ri";
 import { useState } from "react";
 
-export default function Chatpost() {
-  const [msg, setMsg] = useState(" ");
-  const [message, setMessage] = useState("");
-  console.log();
+export default function Chatpost({username}) {
+  const [msg, setMsg] = useState("");
 
   let handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +13,7 @@ export default function Chatpost() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           msg: msg,
+          name:username
         }),
       });
     } catch (err) {
@@ -34,7 +33,7 @@ export default function Chatpost() {
         />
 
         <button type="submit">
-          <RiSendPlane2Line className="send-icon"/>
+          <RiSendPlane2Line className="send-icon" />
         </button>
       </form>
     </div>
