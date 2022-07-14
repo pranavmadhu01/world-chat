@@ -19,7 +19,7 @@ export default function Msgdisplay({ username }) {
   Object.keys(message).map(function (key, index) {
     array.push(message[key].msg);
     arrayName.push(message[key].name);
-    arrayTime.push(message[key].datetime)
+    arrayTime.push(message[key].datetime);
   });
 
   // console.log(arrayTime);
@@ -44,19 +44,7 @@ export default function Msgdisplay({ username }) {
               >
                 {msg}
               </span>
-              <span>{arrayTime[index]}</span>
-              {/* {!invalid.includes(msg.toUpperCase()) ? (
-                <span
-                  className="usermessage-message"
-                  style={{ color: "#3e97c9" }}
-                >
-                  {msg}
-                </span>
-              ) : (
-                <span className="usermessage-message" style={{ color: "red" }}>
-                  {"dont call bad words" + " " + arrayName[index]}
-                </span>
-              )} */}
+              <span className="userdate-date">{arrayTime[index]}</span>
             </div>
           </div>
         ))}
