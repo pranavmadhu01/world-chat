@@ -1,12 +1,36 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Msgdisplay from "./components/Msgdisplay/Msgdisplay";
 import Chatpost from "./components/Chatpost/Chatpost";
 
 function App() {
   const [name, setName] = useState("");
   const [userName, setUserName] = useState("");
-  console.log(name)
+
+  let cachedItem;
+  let userInput = document.getElementById("user-input");
+
+  const getSingleCacheData = async (cacheName, url) => {
+    if (typeof caches === undefined) return false;
+
+    const cacheStorage = await caches.open(cacheName);
+    const cachedResponse = await cacheStorage.match(url);
+    if (!cachedResponse || !cachedResponse.ok) {
+      console.log("Fetched failed!");
+    }
+
+    return cachedResponse.json().then((item) => {
+      cachedItem = item;
+      userInput.classList.add("user-input-wrapper-inactive");
+    });
+  };
+
+  const cacheToFetch = {
+    cacheName: "csechatter",
+    url: "http://localhost:3000/",
+  };
+
+  getSingleCacheData(cacheToFetch.cacheName, cacheToFetch.url);
 
   function getName(e) {
     setName(e.target.value);
@@ -29,36 +53,10 @@ function App() {
       });
     }
   };
-  // console.log(userName);
-
-  if (pranav == 1) {
-    console.log(pranav);
-  }
-
-  //
-  // const getSingleCacheData = async (cacheName, url) => {
-  // if (typeof caches === "undefined") return false;
-  //
-  // const cacheStorage = await caches.open(cacheName);
-  // console.log(url)
-  // const cachedResponse = await cacheStorage.match(url);
-  //
-  // if (!cachedResponse || !cachedResponse.ok) {
-  // console.log("Fetched failed!");
-  // }
-  //
-  // return cachedResponse.json().then((item) => {
-  // console.log(item);
-  // });
-  // };
-  //
-  // const cacheToFetch = { cacheName: "csechatter", url: "https://localhost:3000" };
-  //
-  // getSingleCacheData(cacheToFetch.cacheName, cacheToFetch.url);
 
   return (
     <>
-      <div className="user-input-wrapper" id="user-input">
+      <div className={`user-input-wrapper`} id="user-input">
         <form className="user-input-form-wrapper" onSubmit={handleSubmit}>
           <label>Enter your name</label>
           <input
@@ -72,7 +70,7 @@ function App() {
           </button>
         </form>
       </div>
-      {userName !== "" && (
+      {cachedItem !== "" && (
         <div className="App">
           <Msgdisplay username={userName} />
           <Chatpost username={userName} />

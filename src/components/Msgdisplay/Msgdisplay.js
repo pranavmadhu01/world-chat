@@ -27,7 +27,7 @@ export default function Msgdisplay({ username }) {
       <div className="message-display-inner-wrapper">
         {array.map((msg, index) => (
           <div className="single-message-wrapper">
-            <div className={`message + ${arrayName[index]===username?"message-user-specific":"andi"}`}>
+            <div className={`message + ${arrayName[index]===username?"message-user-specific":""}`}>
               <span className="username-name">{arrayName[index]}:</span>
               <span
                 className="usermessage-message"
