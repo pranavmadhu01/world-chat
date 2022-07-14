@@ -19,16 +19,14 @@ export default function Msgdisplay({ username }) {
     arrayName.push(message[key].name);
   });
   useEffect(() => {
-    // setInterval(fetchData, 200);
-    fetchData();
+    setInterval(fetchData, 200);
+    // fetchData();
   }, []);
   return (
     <div className="message-display-wrapper">
       <div className="message-display-inner-wrapper">
         {array.map((msg, index) => (
           <div className="single-message-wrapper">
-            {console.log(username)}
-           {console.log()}
             <div className={`message + ${arrayName[index]===username?"message-user-specific":"andi"}`}>
               <span className="username-name">{arrayName[index]}:</span>
               <span

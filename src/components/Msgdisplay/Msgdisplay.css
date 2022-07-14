@@ -1,27 +1,28 @@
-.message-display-wrapper{
-  height:100vh;
+.message-display-wrapper {
+  height: 100vh;
   overflow: auto;
 }
-.message-display-inner-wrapper{
+.message-display-inner-wrapper {
   background: url(../../images/bg.webp);
   background-attachment: fixed;
   background-size: 700px auto;
-  min-height:100vh;
-  padding:20px 20px 100px 20px;
+  min-height: 100vh;
+  padding: 20px 20px 100px 20px;
   display: flex;
   flex-direction: column;
-  gap:30px;
+  gap: 30px;
 }
-.single-message-wrapper{
-  width:100%;
+.single-message-wrapper {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
-.message{
-  background:rgba(255,255,255,1);
-  max-width:fit-content;
+.message {
+  position: relative;
+  background: rgba(255, 255, 255, 1);
+  max-width: fit-content;
   min-width: min-content;
-  padding:20px;
+  padding: 20px;
   border-radius: 20px;
   font-size: 2rem;
   font-weight: 500;
@@ -29,27 +30,25 @@
   flex-direction: column;
   text-align: left;
   grid-column: 1;
-
-
+  z-index: 0;
 }
-.message-user-specific{
+.message-user-specific {
   grid-column: -1;
   text-align: right;
-
 }
-.username-name{
+.username-name {
   font-weight: 100;
   font-size: 1rem;
 }
-.message::before{
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left:-2.5px;
-  right:0;
-  width:20px;
-  height:20px;
-  background-color: white;
-  border-radius: 20px;
-}
 
+@media all and (max-width: 500px) {
+  .message {
+    font-size: 1rem;
+    width: max-content;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .username-name {
+    font-size: 0.55em;
+  }
+}

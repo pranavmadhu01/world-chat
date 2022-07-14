@@ -19,6 +19,8 @@
   grid-auto-flow: column;
   justify-content: space-between;
   gap: 10px;
+  z-index:99999;
+
 }
 input {
   background-color: white;
