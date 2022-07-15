@@ -47,6 +47,12 @@
   bottom:0;
   font-size: 0.4em;
 }
+.userlocation-location{
+  position: absolute;
+  bottom:-15%;
+  font-size: 0.4em;
+  color:aquamarine
+}
 
 @media all and (max-width: 500px) {
   .message {

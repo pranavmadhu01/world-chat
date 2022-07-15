@@ -16,10 +16,12 @@ export default function Msgdisplay({ username }) {
   const array = [];
   const arrayName = [];
   const arrayTime = [];
+  const arrayCity = [];
   Object.keys(message).map(function (key, index) {
     array.push(message[key].msg);
     arrayName.push(message[key].name);
     arrayTime.push(message[key].datetime);
+    arrayCity.push(message[key].city);
   });
 
   // console.log(arrayTime);
@@ -44,6 +46,7 @@ export default function Msgdisplay({ username }) {
               >
                 {msg}
               </span>
+              <small className="userlocation-location">{arrayCity[index]}</small>
               <span className="userdate-date">{arrayTime[index]}</span>
             </div>
           </div>
