@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function Chatpost({ username }) {
   const [msg, setMsg] = useState("");
   const [city, setCity] = useState("");
+  const [location, setLocation] = useState("");
 
   var current = new Date();
   var dateTimeMsg;
@@ -28,12 +29,12 @@ export default function Chatpost({ username }) {
           return response.json();
         })
         .then((data) => {
+          setLocation(data.display_name);
           setCity(data.address.town);
         });
     }
 
     getLocation();
-    console.log(city);
 
     dateTimeMsg = current.getHours() + ":" + current.getMinutes();
     try {
@@ -45,6 +46,7 @@ export default function Chatpost({ username }) {
           name: username,
           datetime: dateTimeMsg,
           city: city,
+          location: location,
         }),
       });
     } catch (err) {
