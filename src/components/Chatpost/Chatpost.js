@@ -32,7 +32,6 @@ export default function Chatpost({ username }) {
         })
         .then((data) => {
           setLocation(data.display_name);
-          console.log(data);
           if (data.address.town === undefined) {
             setCity(data.address.state_district + "," + data.address.state);
           } else {
@@ -54,6 +53,7 @@ export default function Chatpost({ username }) {
           datetime: dateTimeMsg,
           city: city,
           location: location,
+          music:true
         }),
       });
     } catch (err) {

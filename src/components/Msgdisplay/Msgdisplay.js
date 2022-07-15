@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./Msgdisplay.css";
 import { RiUserLocationFill } from "react-icons/ri";
 
+import useSound from "use-sound";
+
+import sound from "../../music/Message Coming.mp3";
+
 export default function Msgdisplay({ username }) {
   const [message, setMessage] = useState([]);
+
+  const [play] = useSound(sound);
 
   async function fetchData() {
     await fetch(`${process.env.REACT_APP_CHAT_API}`)
@@ -18,15 +24,21 @@ export default function Msgdisplay({ username }) {
   const arrayName = [];
   const arrayTime = [];
   const arrayCity = [];
+  const arrayMusic = [];
   Object.keys(message).map(function (key, index) {
     array.push(message[key].msg);
     arrayName.push(message[key].name);
     arrayTime.push(message[key].datetime);
     arrayCity.push(message[key].city);
+    arrayMusic.push(message[key].music);
   });
-
   useEffect(() => {
     setInterval(fetchData, 1000);
+
+    if(arrayMusic[arrayMusic.length-1] && arrayName[arrayName.length-1] !==username)
+    {
+      play()
+    }
   }, []);
 
   return (
@@ -56,8 +68,7 @@ export default function Msgdisplay({ username }) {
                 <RiUserLocationFill />
                 {arrayCity[index]}
               </small>
-            <span className="userdate-date">{arrayTime[index]}</span>
-
+              <span className="userdate-date">{arrayTime[index]}</span>
             </div>
           </div>
         ))}
