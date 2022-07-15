@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./Msgdisplay.css";
 import { RiUserLocationFill } from "react-icons/ri";
 
-import useSound from "use-sound";
-
-import sound from "../../music/Message Coming.mp3";
-
 export default function Msgdisplay({ username }) {
   const [message, setMessage] = useState([]);
+  const [ourtext, setOurText] = useState("message arrived");
+  const [arrayLength, setArrayLength] = useState(0);
+  const msg = new SpeechSynthesisUtterance();
 
-  const [play] = useSound(sound);
+  const speechHandler = (msg) => {
+    msg.text = ourtext;
+    window.speechSynthesis.speak(msg);
+  };
 
   async function fetchData() {
     await fetch(`${process.env.REACT_APP_CHAT_API}`)
@@ -32,13 +34,18 @@ export default function Msgdisplay({ username }) {
     arrayCity.push(message[key].city);
     arrayMusic.push(message[key].music);
   });
+  if (array.length > arrayLength) {
+    setArrayLength(array.length);
+    console.log(array[array.length - 1]);
+    setOurText('message arrived')
+    console.log(arrayMusic[array.length - 1]);
+    if (arrayMusic[array.length - 1] && arrayName[array.length-1] !== username) {
+      speechHandler(msg);
+    }
+  }
+
   useEffect(() => {
     setInterval(fetchData, 1000);
-
-    if(arrayMusic[arrayMusic.length-1] && arrayName[arrayName.length-1] !==username)
-    {
-      play()
-    }
   }, []);
 
   return (
