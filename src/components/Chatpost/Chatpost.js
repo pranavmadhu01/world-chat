@@ -4,7 +4,9 @@ import { useState } from "react";
 
 export default function Chatpost({ username }) {
   const [msg, setMsg] = useState("");
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState(
+    "fetching your location put another message"
+  );
   const [location, setLocation] = useState("");
 
   var current = new Date();
@@ -30,7 +32,12 @@ export default function Chatpost({ username }) {
         })
         .then((data) => {
           setLocation(data.display_name);
-          setCity(data.address.town);
+          console.log(data);
+          if (data.address.town === undefined) {
+            setCity(data.address.state_district + "," + data.address.state);
+          } else {
+            setCity(data.address.town + "," + data.address.state);
+          }
         });
     }
 

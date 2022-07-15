@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Msgdisplay.css";
+import { RiUserLocationFill } from "react-icons/ri";
 
 export default function Msgdisplay({ username }) {
   const [message, setMessage] = useState([]);
@@ -24,9 +25,8 @@ export default function Msgdisplay({ username }) {
     arrayCity.push(message[key].city);
   });
 
-  // console.log(arrayTime);
   useEffect(() => {
-    setInterval(fetchData, 200);
+    setInterval(fetchData, 1000);
   }, []);
 
   return (
@@ -46,8 +46,18 @@ export default function Msgdisplay({ username }) {
               >
                 {msg}
               </span>
-              <small className="userlocation-location">{arrayCity[index]}</small>
-              <span className="userdate-date">{arrayTime[index]}</span>
+              <small
+                className={`userlocation-location + ${
+                  arrayName[index] === username
+                    ? "userlocation-location-specific"
+                    : ""
+                }`}
+              >
+                <RiUserLocationFill />
+                {arrayCity[index]}
+              </small>
+            <span className="userdate-date">{arrayTime[index]}</span>
+
             </div>
           </div>
         ))}

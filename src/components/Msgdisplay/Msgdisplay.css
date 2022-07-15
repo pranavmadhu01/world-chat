@@ -1,11 +1,11 @@
 .message-display-wrapper {
   height: 100vh;
   overflow: auto;
-}
-.message-display-inner-wrapper {
   background: url(../../images/bg.webp);
   background-attachment: fixed;
-  background-size: 700px auto;
+  background-size: 700px aut
+}
+.message-display-inner-wrapper {
   min-height: 100vh;
   padding: 20px 20px 100px 20px;
   display: flex;
@@ -15,7 +15,7 @@
 .single-message-wrapper {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(10, 1fr); 
+  grid-template-columns: repeat(10, 1fr);
 }
 .message {
   position: relative;
@@ -33,25 +33,36 @@
   z-index: 0;
 }
 .message-user-specific {
-  width:100%;
-  grid-column:-1;
+  width: 100%;
+  grid-column: -1;
+  text-align: right;
+}
+.usermessage-message{
+  /* width:fit-content; */
   text-align: right;
 }
 .username-name {
-
   font-weight: 100;
   font-size: 1rem;
 }
-.userdate-date{
-  position:absolute;
-  bottom:0;
+.userdate-date {
+  /* position: absolute; */
+  top: 0;
+  left:-100%;
   font-size: 0.4em;
+  color:red;
+  z-index:9999;
 }
-.userlocation-location{
-  position: absolute;
-  bottom:-15%;
+.userlocation-location {
+  width:max-content;
+  /* position: absolute; */
+  bottom: -15%;
+  left:0;
   font-size: 0.4em;
-  color:aquamarine
+  color: #11273B;
+}
+.userlocation-location-specific{
+
 }
 
 @media all and (max-width: 500px) {
