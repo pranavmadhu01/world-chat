@@ -61,9 +61,26 @@
   font-size: 0.4em;
   color: #11273B;
 }
-.userlocation-location-specific{
-
+.bottom-link{
+  width:50px;
+  height:50px;
+  position: fixed;
+  bottom:10%;
+  right:2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #316DAD;
+  padding:10px;
+  border: 2px solid white;
+  border-radius: 50%;
 }
+.bottom-icon{
+  color:white;
+  font-size: 20rem;
+  font-weight: 900;
+}
+
 
 @media all and (max-width: 500px) {
   .message {

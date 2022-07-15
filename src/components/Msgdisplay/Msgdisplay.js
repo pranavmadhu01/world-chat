@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Msgdisplay.css";
 import { RiUserLocationFill } from "react-icons/ri";
+import {TbArrowBottomCircle} from "react-icons/tb";
 
 export default function Msgdisplay({ username }) {
   const [message, setMessage] = useState([]);
@@ -79,7 +80,10 @@ export default function Msgdisplay({ username }) {
             </div>
           </div>
         ))}
+        <span><a href="#tobottom" className="bottom-link"><TbArrowBottomCircle className="bottom-icon"/></a></span>
+        <span id="tobottom"></span>
       </div>
+      
     </div>
   );
 }
