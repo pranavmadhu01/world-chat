@@ -42,7 +42,17 @@ export default function Chatpost({ username }) {
 
     getLocation();
 
-    dateTimeMsg = current.getHours() + ":" + current.getMinutes();
+    dateTimeMsg =
+      current.getDate() +
+      "/" +
+      current.getMonth() +
+      "/" +
+      current.getFullYear() +
+      "," +
+      current.getHours() +
+      ":" +
+      current.getMinutes();
+    console.log(dateTimeMsg);
     try {
       let res = await fetch(`${process.env.REACT_APP_CHAT_API}`, {
         method: "POST",
@@ -53,7 +63,7 @@ export default function Chatpost({ username }) {
           datetime: dateTimeMsg,
           city: city,
           location: location,
-          music:true
+          music: true,
         }),
       });
     } catch (err) {

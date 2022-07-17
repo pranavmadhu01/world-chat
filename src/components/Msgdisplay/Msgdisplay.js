@@ -37,9 +37,7 @@ export default function Msgdisplay({ username }) {
   });
   if (array.length > arrayLength) {
     setArrayLength(array.length);
-    console.log(array[array.length - 1]);
-    setOurText('message arrived')
-    console.log(arrayMusic[array.length - 1]);
+    setOurText('message arrived');
     if (arrayMusic[array.length - 1] && arrayName[array.length-1] !== username) {
       speechHandler(msg);
     }
