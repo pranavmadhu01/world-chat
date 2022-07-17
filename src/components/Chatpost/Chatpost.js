@@ -51,8 +51,9 @@ export default function Chatpost({ username }) {
       "," +
       current.getHours() +
       ":" +
-      current.getMinutes();
-    console.log(dateTimeMsg);
+      current.getMinutes() +
+      ":" +
+      current.getMilliseconds();
     try {
       let res = await fetch(`${process.env.REACT_APP_CHAT_API}`, {
         method: "POST",
