@@ -2,6 +2,8 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Msgdisplay from "./components/Msgdisplay/Msgdisplay";
 import Chatpost from "./components/Chatpost/Chatpost";
+import imageone from "./images/undraw_connected_world_wuay.svg"
+import imagetwo from "./images/undraw_world_re_768g.svg"
 
 function App() {
   const [name, setName] = useState("");
@@ -47,8 +49,9 @@ function App() {
   return (
     <>
       <div className={`user-input-wrapper`} id="user-input">
-        <p>{"Hi today is" + " " + weekday[current.getDay()]}</p>
-        <img src={weekimages[current.getDay()]} alt="" />
+        <img src={imagetwo} alt="" className="user-input-side-image"/>
+        {/* <p>{"Hi today is" + " " + weekday[current.getDay()]}</p> */}
+        {/* <img src={weekimages[current.getDay()]} alt="" /> */}
         <form className="user-input-form-wrapper" onSubmit={handleSubmit}>
           <label>Enter your name</label>
           <input
@@ -56,12 +59,13 @@ function App() {
             className="name-input-textfield"
             placeholder="nameplss..."
             onChange={getName}
+            required={true}
           />
           <button type="submit" className="user-input-submit-button">
             wroom..
           </button>
         </form>
-        <p>{weekquotes[current.getDay()]}</p>
+        {/* <p>{weekquotes[current.getDay()]}</p> */}
       </div>
       {userName !== "" && (
         <div className="App">

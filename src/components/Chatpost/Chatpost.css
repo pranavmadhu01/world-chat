@@ -50,6 +50,8 @@ button {
   border-radius: 10px;
   cursor: pointer;
   background: linear-gradient(90deg, #3e97c9, #233f8e);
+  background:#6c63ff;
+  font-size: 1.5rem;
 }
 .send-icon {
   color: white;
