@@ -60,7 +60,7 @@ export default function Msgdisplay({ username }) {
               <span className="username-name">{arrayName[index]}:</span>
               <span
                 className="usermessage-message"
-                style={{ color: "#3e97c9" }}
+                style={{ color: "#fff" }}
               >
                 {msg}
               </span>

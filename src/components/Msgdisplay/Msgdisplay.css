@@ -1,7 +1,9 @@
 .message-display-wrapper {
   height: 100vh;
   overflow: auto;
-  background: url(../../images/bg.webp);
+  background: url(../../images/undraw_connected_world_wuay.svg);
+  background-size: 100% 100%;
+  background-position: center;
   background-attachment: fixed;
   background-size: 700px aut
 }
@@ -19,7 +21,7 @@
 }
 .message {
   position: relative;
-  background: rgba(255, 255, 255, 1);
+  background: #6c63ff;
   max-width: fit-content;
   /* min-width: min-content; */
   padding: 20px;
@@ -40,6 +42,7 @@
 .usermessage-message{
   /* width:fit-content; */
   text-align: right;
+  color:white;
 }
 .username-name {
   font-weight: 100;
@@ -50,7 +53,7 @@
   top: 0;
   left:-100%;
   font-size: 0.4em;
-  color:red;
+  color:white;
   z-index:9999;
 }
 .userlocation-location {
@@ -59,7 +62,7 @@
   bottom: -15%;
   left:0;
   font-size: 0.4em;
-  color: #11273B;
+  color:#3F3D56;
 }
 .bottom-link{
   width:50px;
@@ -70,7 +73,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #316DAD;
+  background-color: #6c63ff;
   padding:10px;
   border: 2px solid white;
   border-radius: 50%;
