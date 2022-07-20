@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Msgdisplay.css";
 import { RiUserLocationFill } from "react-icons/ri";
-import {TbArrowBottomCircle} from "react-icons/tb";
+import { TbArrowBottomCircle } from "react-icons/tb";
 
 export default function Msgdisplay({ username }) {
   const [message, setMessage] = useState([]);
@@ -37,8 +37,11 @@ export default function Msgdisplay({ username }) {
   });
   if (array.length > arrayLength) {
     setArrayLength(array.length);
-    setOurText('message arrived');
-    if (arrayMusic[array.length - 1] && arrayName[array.length-1] !== username) {
+    setOurText("message arrived");
+    if (
+      arrayMusic[array.length - 1] &&
+      arrayName[array.length - 1] !== username
+    ) {
       speechHandler(msg);
     }
   }
@@ -58,12 +61,8 @@ export default function Msgdisplay({ username }) {
               }`}
             >
               <span className="username-name">{arrayName[index]}:</span>
-              <span
-                className="usermessage-message"
-                style={{ color: "#fff" }}
-              >
-                {msg}
-              </span>
+              <span className="usermessage-message">{msg}</span>
+              <span className="userdate-date">{arrayTime[index]}</span>
               <small
                 className={`userlocation-location + ${
                   arrayName[index] === username
@@ -74,14 +73,16 @@ export default function Msgdisplay({ username }) {
                 <RiUserLocationFill />
                 {arrayCity[index]}
               </small>
-              <span className="userdate-date">{arrayTime[index]}</span>
             </div>
           </div>
         ))}
-        <span><a href="#tobottom" className="bottom-link"><TbArrowBottomCircle className="bottom-icon"/></a></span>
+        <span>
+          <a href="#tobottom" className="bottom-link">
+            <TbArrowBottomCircle className="bottom-icon" />
+          </a>
+        </span>
         <span id="tobottom"></span>
       </div>
-      
     </div>
   );
 }
