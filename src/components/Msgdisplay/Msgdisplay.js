@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import "./Msgdisplay.css";
 import { RiUserLocationFill } from "react-icons/ri";
 import { TbArrowBottomCircle } from "react-icons/tb";
@@ -7,12 +7,16 @@ export default function Msgdisplay({ username }) {
   const [message, setMessage] = useState([]);
   const [ourtext, setOurText] = useState("message arrived");
   const [arrayLength, setArrayLength] = useState(0);
+  const messagesEndRef = useRef(null)
   const msg = new SpeechSynthesisUtterance();
 
   const speechHandler = (msg) => {
     msg.text = ourtext;
     window.speechSynthesis.speak(msg);
-  };
+  }; 
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+  }
 
   async function fetchData() {
     await fetch(`${process.env.REACT_APP_CHAT_API}`)
@@ -48,10 +52,11 @@ export default function Msgdisplay({ username }) {
 
   useEffect(() => {
     setInterval(fetchData, 1000);
-  }, []);
+    scrollToBottom()
+  }, [message]);
 
   return (
-    <div className="message-display-wrapper">
+    <div className="message-display-wrapper" >
       <div className="message-display-inner-wrapper">
         {array.map((msg, index) => (
           <div className="single-message-wrapper">
@@ -81,7 +86,8 @@ export default function Msgdisplay({ username }) {
             <TbArrowBottomCircle className="bottom-icon" />
           </a>
         </span>
-        <span id="tobottom"></span>
+        <span id="tobottom" ref={messagesEndRef}></span>
+
       </div>
     </div>
   );
