@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Msgdisplay.css";
 import { RiUserLocationFill } from "react-icons/ri";
 import { TbArrowBottomCircle } from "react-icons/tb";
@@ -13,7 +13,7 @@ export default function Msgdisplay({ username }) {
   const speechHandler = (msg) => {
     msg.text = ourtext;
     window.speechSynthesis.speak(msg);
-  }; 
+  };
   const scrollToBottom = () => {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
   }
@@ -48,15 +48,15 @@ export default function Msgdisplay({ username }) {
     ) {
       speechHandler(msg);
     }
+    scrollToBottom();
   }
 
   useEffect(() => {
     setInterval(fetchData, 1000);
-    scrollToBottom()
-  }, [message]);
+  }, []);
 
   return (
-    <div className="message-display-wrapper" >
+    <div className="message-display-wrapper">
       <div className="message-display-inner-wrapper">
         {array.map((msg, index) => (
           <div className="single-message-wrapper">
@@ -87,7 +87,6 @@ export default function Msgdisplay({ username }) {
           </a>
         </span>
         <span id="tobottom" ref={messagesEndRef}></span>
-
       </div>
     </div>
   );
