@@ -8,6 +8,7 @@
   background-size: 900px auto;
   background-repeat: no-repeat;
   background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 16, 16,0.9);
   background-blend-mode: color;
 }
 .message-display-inner-wrapper {
@@ -19,8 +20,12 @@
 }
 .single-message-wrapper {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.single-message-wrapper-user-specific{
+  flex-direction: row-reverse;
 }
 .message {
   position: relative;
@@ -29,30 +34,46 @@
   font-weight: 500;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   text-align: left;
-  grid-column: 1/5;
   z-index: 0;
 }
 .message-user-specific {
-  width: 100%;
-  grid-column: -1;
+  position: relative;
+  max-width:max-content;
+  font-size: 1.8rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  z-index: 0;
   text-align: right;
 }
 .usermessage-message{
-  background: #6c63ff;
+  font-size: 1.5rem;
+  width:max-content;
+  max-width: 250px;
+  word-wrap: break-word;
+  /* background: #6c63ff; */
   padding:10px;
-  border-radius: 10px;;
-  text-align: left;
-  color:white;
+  border-radius: 10px;
+  text-align: right;
+  /* color:white;
+   */
+   color: #008282;
+
 }
 .username-name {
+  color:chartreuse;
+  letter-spacing: 5px;;
   font-weight: 100;
   font-size: 1rem;
 }
 .userdate-date {
   top: 0;
   left:-100%;
-  font-size: 0.4em;
+  font-size: 0.3em;
   color:white;
   z-index:9999;
 }
@@ -60,9 +81,8 @@
   width:max-content;
   bottom: -15%;
   left:0;
-  font-size: 0.4em;
-  color:#3F3D56;
-  color:#0BCAD4;
+  font-size: 0.3em;
+  color:#5454ff;
 }
 .bottom-link{
   width:50px;

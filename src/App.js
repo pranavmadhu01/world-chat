@@ -55,7 +55,6 @@ function App() {
           </div>
           {userName !== "" && (
             <div className="App">
-              <Loading />
               <Msgdisplay username={userName} />
               <Chatpost username={userName} />
             </div>

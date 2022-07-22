@@ -60,14 +60,14 @@ export default function Msgdisplay({ username }) {
     <div className="message-display-wrapper">
       <div className="message-display-inner-wrapper">
         {array.map((msg, index) => (
-          <div className="single-message-wrapper">
+          <div className={`single-message-wrapper + ${arrayName[index] === username ?"single-message-wrapper-user-specific":""}`}>
             <div
-              className={`message + ${
-                arrayName[index] === username ? "message-user-specific" : ""
+              className={`${
+                arrayName[index] === username ? "message-user-specific" : "message"
               }`}
             >
-              <span className="username-name">{arrayName[index]}:</span>
-              <span className="usermessage-message">{msg}</span>
+              <span className="username-name">{arrayName[index]}:~></span>
+              <span className="usermessage-message">{"$"+" "+msg}</span>
               <span className="userdate-date">{arrayTime[index]}</span>
               <small
                 className={`userlocation-location + ${
@@ -80,6 +80,7 @@ export default function Msgdisplay({ username }) {
                 {arrayCity[index]}
               </small>
             </div>
+            <div></div>
           </div>
         ))}
         <span>
