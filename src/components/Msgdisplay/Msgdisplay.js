@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Msgdisplay.css";
 import { RiUserLocationFill } from "react-icons/ri";
-import { TbArrowBottomCircle } from "react-icons/tb";
+import {
+  TbArrowBottomCircle,
+  TbCurrentLocation,
+  TbLocation,
+} from "react-icons/tb";
 
 export default function Msgdisplay({ username }) {
   const [message, setMessage] = useState([]);
@@ -60,14 +64,36 @@ export default function Msgdisplay({ username }) {
     <div className="message-display-wrapper">
       <div className="message-display-inner-wrapper">
         {array.map((msg, index) => (
-          <div className={`single-message-wrapper + ${arrayName[index] === username ?"single-message-wrapper-user-specific":""}`}>
+          <div
+            className={`single-message-wrapper + ${
+              arrayName[index] === username
+                ? "single-message-wrapper-user-specific"
+                : ""
+            }`}
+          >
             <div
               className={`${
-                arrayName[index] === username ? "message-user-specific" : "message"
+                arrayName[index] === username
+                  ? "message-user-specific"
+                  : "message"
               }`}
             >
-              <span className="username-name">{arrayName[index]+":~>"}</span>
-              <span className="usermessage-message">{"$"+" "+msg}</span>
+              <span className="username-name">{arrayName[index] + ":~>"}</span>
+              <span className="usermessage-message">
+                {msg.includes("https://") ||
+                msg.includes("http://") ||
+                msg.includes(".com") ||
+                msg.includes(".in") ||
+                msg.includes("www.") ||
+                msg.includes(".netlify") ||
+                msg.includes(".app") ? (
+                  <a href={msg} target="_blank_">
+                    {msg}
+                  </a>
+                ) : (
+                  msg
+                )}
+              </span>
               <span className="userdate-date">{arrayTime[index]}</span>
               <small
                 className={`userlocation-location + ${
