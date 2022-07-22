@@ -12,10 +12,10 @@
 }
 .message-display-inner-wrapper {
   min-height: 100vh;
-  padding: 20px 20px 100px 20px;
+  padding: 20px 20px 200px 20px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 .single-message-wrapper {
   width: 100%;
@@ -24,7 +24,6 @@
 }
 .message {
   position: relative;
-  /* background: #6c63ff; */
   max-width: fit-content;
   font-size: 1.8rem;
   font-weight: 500;
@@ -40,7 +39,6 @@
   text-align: right;
 }
 .usermessage-message{
-  /* width:max-content; */
   background: #6c63ff;
   padding:10px;
   border-radius: 10px;;
@@ -52,7 +50,6 @@
   font-size: 1rem;
 }
 .userdate-date {
-  /* position: absolute; */
   top: 0;
   left:-100%;
   font-size: 0.4em;
@@ -61,11 +58,11 @@
 }
 .userlocation-location {
   width:max-content;
-  /* position: absolute; */
   bottom: -15%;
   left:0;
   font-size: 0.4em;
   color:#3F3D56;
+  color:#0BCAD4;
 }
 .bottom-link{
   width:50px;

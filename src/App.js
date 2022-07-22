@@ -2,7 +2,6 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Msgdisplay from "./components/Msgdisplay/Msgdisplay";
 import Chatpost from "./components/Chatpost/Chatpost";
-import imageone from "./images/undraw_connected_world_wuay.svg"
 import imagetwo from "./images/undraw_world_re_768g.svg"
 
 function App() {
@@ -26,15 +25,15 @@ function App() {
     "Without Friday, the weekend would be half over already.",
     "Saturday is the mightiest day of the week. It's unshakably, overwhelmingly superior.",
   ]
-  const weekimages = [
-    require(`./images/sunday.webp`),
-    require(`./images/monday.jpg`),
-    require(`./images/tuesday.jpg`),
-    require(`./images/wednesday.jpg`),
-    require(`./images/thursday.jpg`),
-    require(`./images/friday.jpg`),
-    require(`./images/saturday.webp`),
-  ]
+  // const weekimages = [
+  //   require(`./images/sunday.webp`),
+  //   require(`./images/monday.jpg`),
+  //   require(`./images/tuesday.jpg`),
+  //   require(`./images/wednesday.jpg`),
+  //   require(`./images/thursday.jpg`),
+  //   require(`./images/friday.jpg`),
+  //   require(`./images/saturday.webp`),
+  // ]
   var current = new Date();
 
   function getName(e) {

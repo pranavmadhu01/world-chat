@@ -7,7 +7,7 @@ export default function Msgdisplay({ username }) {
   const [message, setMessage] = useState([]);
   const [ourtext, setOurText] = useState("message arrived");
   const [arrayLength, setArrayLength] = useState(0);
-  const messagesEndRef = useRef(null)
+  const messagesEndRef = useRef(null);
   const msg = new SpeechSynthesisUtterance();
 
   const speechHandler = (msg) => {
@@ -15,8 +15,8 @@ export default function Msgdisplay({ username }) {
     window.speechSynthesis.speak(msg);
   };
   const scrollToBottom = () => {
-    messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
-  }
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   async function fetchData() {
     await fetch(`${process.env.REACT_APP_CHAT_API}`)
@@ -48,6 +48,7 @@ export default function Msgdisplay({ username }) {
     ) {
       speechHandler(msg);
     }
+    scrollToBottom();
     scrollToBottom();
   }
 
@@ -86,8 +87,8 @@ export default function Msgdisplay({ username }) {
             <TbArrowBottomCircle className="bottom-icon" />
           </a>
         </span>
-        <span id="tobottom" ref={messagesEndRef}></span>
       </div>
+      <span id="tobottom" ref={messagesEndRef}></span>
     </div>
   );
 }
