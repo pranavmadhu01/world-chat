@@ -80,13 +80,7 @@ export default function Msgdisplay({ username }) {
             >
               <span className="username-name">{arrayName[index] + ":~>"}</span>
               <span className="usermessage-message">
-                {msg.includes("https://") ||
-                msg.includes("http://") ||
-                msg.includes(".com") ||
-                msg.includes(".in") ||
-                msg.includes("www.") ||
-                msg.includes(".netlify") ||
-                msg.includes(".app") ? (
+                {msg.includes("https://") || msg.includes("http://") ? (
                   <a href={msg} target="_blank_">
                     {msg}
                   </a>
