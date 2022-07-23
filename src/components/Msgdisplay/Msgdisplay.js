@@ -14,6 +14,8 @@ export default function Msgdisplay({ username }) {
   const messagesEndRef = useRef(null);
   const msg = new SpeechSynthesisUtterance();
 
+  console.log();
+
   const speechHandler = (msg) => {
     msg.text = ourtext;
     window.speechSynthesis.speak(msg);
@@ -36,12 +38,14 @@ export default function Msgdisplay({ username }) {
   const arrayTime = [];
   const arrayCity = [];
   const arrayMusic = [];
+  const arrayPing = [];
   Object.keys(message).map(function (key, index) {
     array.push(message[key].msg);
     arrayName.push(message[key].name);
     arrayTime.push(message[key].datetime);
     arrayCity.push(message[key].city);
     arrayMusic.push(message[key].music);
+    arrayPing.push(message[key].ping);
   });
   if (array.length > arrayLength) {
     setArrayLength(array.length);
@@ -98,6 +102,9 @@ export default function Msgdisplay({ username }) {
               >
                 <RiUserLocationFill />
                 {arrayCity[index]}
+              </small>
+              <small className="userdate-date">
+                {arrayPing[index] !== undefined ? arrayPing[index] + "ms" : ""}
               </small>
             </div>
             <div></div>

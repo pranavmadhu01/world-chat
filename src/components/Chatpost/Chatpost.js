@@ -65,6 +65,7 @@ export default function Chatpost({ username }) {
           city: city,
           location: location,
           music: true,
+          ping:navigator.connection.rtt,
         }),
       });
     } catch (err) {
