@@ -14,8 +14,6 @@ export default function Msgdisplay({ username }) {
   const messagesEndRef = useRef(null);
   const msg = new SpeechSynthesisUtterance();
 
-  console.log();
-
   const speechHandler = (msg) => {
     msg.text = ourtext;
     window.speechSynthesis.speak(msg);
@@ -100,7 +98,7 @@ export default function Msgdisplay({ username }) {
                     : ""
                 }`}
               >
-                <RiUserLocationFill />
+                <TbCurrentLocation  className="current-location-icon"/>
                 {arrayCity[index]}
               </small>
               <small className="userdate-date">
