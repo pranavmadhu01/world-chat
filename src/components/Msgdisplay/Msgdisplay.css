@@ -74,9 +74,9 @@
 }
 .username-name {
   color:red;
-  letter-spacing: 5px;;
+  letter-spacing: 2px;;
   font-weight: 100;
-  font-size: 1rem;
+  font-size: 15px;
 }
 .userdate-date {
   top: 0;
@@ -126,7 +126,7 @@
     padding: 10px;
     border-radius: 10px;
   }
-  .username-name {
+  /* .username-name {
     font-size: 0.55em;
-  }
+  } */
 }
