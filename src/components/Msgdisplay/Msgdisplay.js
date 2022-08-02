@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Msgdisplay.css";
-import { RiUserLocationFill } from "react-icons/ri";
 import {
   TbArrowBottomCircle,
   TbCurrentLocation,
-  TbLocation,
 } from "react-icons/tb";
 
 export default function Msgdisplay({ username }) {

@@ -1,13 +1,36 @@
 import "./Chatpost.css";
 import { RiSendPlane2Line } from "react-icons/ri";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Chatpost({ username }) {
   const [msg, setMsg] = useState("");
-  const [city, setCity] = useState(
-    "fetching your location put another message"
-  );
+  const [city, setCity] = useState("fetching your location put another msg");
   const [location, setLocation] = useState("");
+  const [executed, setExecuted] = useState(true);
+  async function fetchStatus() {
+    console.log("hello iam executing");
+    setExecuted(false);
+    await fetch(`${process.env.REACT_APP_STATUS_API}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        postStatus(parseInt(data.stats) + 1);
+      });
+  }
+  async function postStatus(count) {
+    try {
+      let res = await fetch(`${process.env.REACT_APP_STATUS_API}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          stats: count,
+        }),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   var current = new Date();
   var dateTimeMsg;
@@ -65,7 +88,8 @@ export default function Chatpost({ username }) {
           city: city,
           location: location,
           music: true,
-          ping:navigator.connection.rtt,
+          ping: navigator.connection.rtt,
+          os: navigator.platform,
         }),
       });
     } catch (err) {
@@ -73,6 +97,11 @@ export default function Chatpost({ username }) {
     }
     setMsg("");
   };
+  useEffect(() => {
+    if (navigator.onLine && executed) {
+      fetchStatus();
+    }
+  }, []);
 
   return (
     <div className="input-wrapper">
